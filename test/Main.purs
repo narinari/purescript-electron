@@ -4,6 +4,8 @@ import Prelude (Unit)
 
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE)
+import Control.Monad.Aff.AVar (AVAR)
+import Control.Monad.Eff.Timer (TIMER)
 import Node.Process (PROCESS)
 
 import Data.Argonaut.Encode.Combinators ((~>), (:=))
@@ -17,7 +19,7 @@ import Test.Spec.Runner (run)
 import Electron.BrowserWindow (BrowserWindowOption(WebPreferences, Height, Width), WebPreference(OverlayScrollbars))
 import Electron.Options (encodeOptions)
 
-main :: forall eff. Eff (process :: PROCESS, console :: CONSOLE | eff) Unit
+main :: forall eff. Eff (process :: PROCESS, console :: CONSOLE, avar :: AVAR, timer :: TIMER | eff) Unit
 main = run [consoleReporter] do
   describe "encodeOptions :: BrowserWindowOptions -> Json" do
     it "can encode all options" do
