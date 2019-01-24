@@ -42,7 +42,7 @@ derive instance genericBrowserWindowOption :: Generic BrowserWindowOption
 
 derive instance genericWebPreference :: Generic WebPreference
 
-foreign import data BrowserWindow :: Type
+foreign import data BrowserWindow :: *
 
 newBrowserWindow :: forall eff
    . BrowserWindowOptions
@@ -63,7 +63,7 @@ foreign import onClose :: forall eff
   -> Eff (electron :: ELECTRON | eff) Unit
   -> Eff (electron :: ELECTRON | eff) Unit
 
-foreign import data WebContents :: Type
+foreign import data WebContents :: *
 
 foreign import webContents :: forall eff
    . BrowserWindow
